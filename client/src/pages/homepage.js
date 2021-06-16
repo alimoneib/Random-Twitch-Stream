@@ -15,7 +15,6 @@ import Form from "react-bootstrap/Form";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import image from "../failfish.png";
 class Homepage extends Component {
   constructor(props) {
     super(props);

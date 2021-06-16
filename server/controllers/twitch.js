@@ -1,6 +1,35 @@
 import axios from "axios";
 import puppeteer from "puppeteer";
+import redis from "redis";
 
+const REDIS_PORT = process.env.REDIS_PORT || 6379;
+const client = redis.createClient(REDIS_PORT);
+
+export const cacheTags = (req, res, next) => {
+  console.log("Fetching Tags from Redis Server")
+    client.get("tags", (err, data) => {
+        if (err) throw err;
+
+        if (data !== null){
+            res.status(200).json(JSON.parse(data));
+        } else {
+            next();
+        }
+    })
+}
+
+export const cacheGames = (req, res, next) => {
+  console.log("Fetching Games from Redis Server")
+  client.get("games", (err, data) => {
+    if (err) throw err;
+
+    if(data !== null){
+      res.status(200).json(JSON.parse(data));
+    } else {
+      next();
+    }
+  })
+}
 export const getToken = async (req, res, next) => {
   let accessToken = "";
 
@@ -26,7 +55,7 @@ export const getTags = async (req, res, next) => {
   const { accessToken } = req.query;
   let tags = [];
   let cursor = "";
-
+  console.log("Fetching Tags from Twitch API")
   try {
     do {
       await axios({
@@ -65,6 +94,9 @@ export const getTags = async (req, res, next) => {
 
     reducedTags.sort((a, b) => a.name.localeCompare(b.name));
 
+    //set to redis
+    client.setex("tags", 604800000, JSON.stringify(reducedTags)); 
+
     res.status(200).json(reducedTags);
   } catch (error) {
     console.log(error);
@@ -76,6 +108,7 @@ export const getGames = async (req, res, next) => {
   const { accessToken } = req.query;
   let games = [];
   let cursor = "";
+  console.log("Fetching Games from Twitch API")
 
   try {
     do {
@@ -113,6 +146,8 @@ export const getGames = async (req, res, next) => {
     });
 
     reducedGames.sort((a, b) => a.name.localeCompare(b.name));
+
+    client.setex("games", 604800000, JSON.stringify(reducedGames)); 
 
     res.status(200).json(reducedGames);
   } catch (error) {
