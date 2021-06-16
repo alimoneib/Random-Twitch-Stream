@@ -1,0 +1,106 @@
+.root {
+    background-color: #201122;
+    height: 100vh;
+}
+.center-div {
+    background-color: #9f57ff;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+    box-shadow: 0px 5px 10px #000;
+    padding: 5%;
+}
+.Toastify__toast--default {
+    box-shadow: 0px 5px 10px #000 !important;
+    background-color: #201122 !important;
+    color: #FFF !important;
+    font-family: 'CaviarDreams' !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+.title-body {
+    font-family: 'markerFelt';
+    -webkit-text-stroke: 1px black;
+}
+.subtitle-body {
+    font-family: 'coolvetica';
+}
+.dropdown {
+    display: inline-block;
+}
+.mature-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.mature-btn {
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0px 5px 10px #393938;
+    margin-bottom: 5%;
+    background-color: #6441a5;
+}
+.radio-btn {
+    border-color: #201122 !important;
+    background-color: #3c2240;
+    font-family: 'CaviarDreams';
+}
+.active {
+    background-color: #6441a5 !important;
+}
+.loading {
+    text-align: center;
+}
+.randomise-btn-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.randomise-btn {
+    background-color: #6441a5;
+    box-shadow: 0px 5px 10px #393938;
+    border-color: #201122;
+    font-family: 'CaviarDreams';
+    padding-left: 7%;
+    padding-right: 7%;
+}
+.viewers-slider {
+    padding-top: 10%;
+}
+.viewers-input {
+    background-color: #6441a5;
+    border-color: #201122 !important;
+    color: white;
+    font-family: 'CaviarDreams';
+}
+.input-range__track--active, .input-range__slider {
+    background: #201122 !important;
+    border-color: #6441a5 !important;
+}
+.input-range__label {
+    font-family: 'CaviarDreams' !important;
+    font-weight: lighter;
+    color: #FFF !important;
+}
+.input-range__track {
+    background: #6441a5 !important;
+    box-shadow: 0px 5px 10px #393938;
+}
+.input-range__track--active {
+    box-shadow: 0px 5px 10px #393938;
+    background: #201122 !important;
+}
+@font-face {
+    font-family: 'markerFelt';
+    src: local('markerFelt'), url(../fonts/MarkerFelt.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'coolvetica';
+    src: local('coolvetica'), url(../fonts/coolvetica.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'CaviarDreams';
+    src: local('CaviarDreams'), url(../fonts/CaviarDreams.ttf) format('truetype');
+}
